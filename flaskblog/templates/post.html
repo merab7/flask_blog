@@ -1,0 +1,30 @@
+{% extends "layout.html" %} {% block content %}
+
+<article class="media content-section">
+  <img
+    class="rounded-circle, article-img"
+    src="{{url_for('static', filename='profile_pics/' + post.author.image_file )}}"
+    alt=""
+  />
+  <div class="media-body">
+    <div class="article-metadata">
+      <a
+        class="mr-2"
+        href="{{url_for('users.authors_posts', author=post.author.username)}}"
+        >{{ post.author.username }}</a
+      >
+      <small class="text-muted"
+        >{{ post.date_posted.strftime('%Y-%m-%d') }}</small
+      >
+    </div>
+    <h2 class="article-title">{{ post.title|safe }}</h2>
+    <p class="article-content">{{ post.content|safe }}</p>
+  </div>
+  {% if current_user.is_authenticated and
+  post.author.username==current_user.username %}
+  <a class="btn btn-success" href="{{url_for('posts.edit', id=post.id)}}"
+    >Edit</a
+  >
+  {% endif %}
+</article>
+{% endblock content %}

@@ -1,0 +1,9 @@
+{% extends "layout.html" %} {% block content %}
+<div class="mb-4">
+  <h4>Edit post</h4>
+</div>
+<div class="container border p-4">
+  {{ ckeditor.load() }} {% from 'bootstrap5/form.html' import render_form %} {{
+  render_form(edit_form) }} {{ ckeditor.config(name='content') }}
+</div>
+{% endblock content %}

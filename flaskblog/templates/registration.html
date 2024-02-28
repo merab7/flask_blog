@@ -1,0 +1,11 @@
+{% extends "layout.html" %} {% block content %}
+<div class="container border p-5">
+  {% from 'bootstrap5/form.html' import render_form %} {{ render_form(reg_form)
+  }}
+
+  <p class="mt-5">
+    Already registered? <a href="{{url_for('users.login')}}">Login</a>
+  </p>
+</div>
+
+{% endblock content %}
